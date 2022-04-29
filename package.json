@@ -1,0 +1,14 @@
+{
+  "name": "melon-scrape",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "melon-scrape-server",
+  "main": "index.js",
+  "author": "baejoonsoo",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.18.0"
+  }
+}
