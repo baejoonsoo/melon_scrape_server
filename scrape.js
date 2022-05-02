@@ -20,7 +20,6 @@ const getData = async (child, $) => {
     const title = $(songInfo).find(".rank01 > span > a").text().trim();
     const singer = $(songInfo).find(".rank02 > span").text().trim();
     const album = $(songInfo).find(".rank03 > a").text().trim();
-
     const attr = $(songInfo).find(".rank03 > a").attr("href").slice(37, -3);
     const url = "https://www.melon.com/album/detail.htm?albumId=" + attr;
 
