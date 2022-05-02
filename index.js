@@ -14,5 +14,5 @@ app.get("/melon", async function (_, res) {
 });
 
 app.listen(port, function () {
-  console.log("start! express server");
+  console.log("start! melon scrape server!");
 });
