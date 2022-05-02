@@ -19,7 +19,7 @@ const getData = async (child) => {
 
     const rank = $(elem).find(".t_center > .rank").text().trim();
     const title = $(songInfo).find(".rank01 > span > a").text().trim();
-    const singer = $(songInfo).find(".rank02 > a").text().trim();
+    const singer = $(songInfo).find(".rank02 > span").text().trim();
     const album = $(songInfo).find(".rank03 > a").text().trim();
 
     lists.push({
