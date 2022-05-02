@@ -36,6 +36,8 @@ const getData = async (child, $) => {
   return lists;
 };
 
+const datePad = (date) => date.toString().padStart(2, "0");
+
 const scrape = async () => {
   const $ = cheerio.load(await getDocData());
 
@@ -44,9 +46,24 @@ const scrape = async () => {
   const lst100 = await getData(table.find(".lst100"), $);
 
   const lists = [...lst50, ...lst100];
-  // console.log(lists);
 
-  return lists;
+  const date = new Date();
+
+  const time =
+    datePad(date.getDate()) +
+    "/" +
+    datePad(date.getMonth() + 1) +
+    "/" +
+    date.getFullYear() +
+    " " +
+    datePad(date.getHours()) +
+    ":" +
+    datePad(date.getMinutes());
+
+  return {
+    timestemp: time,
+    songRank: lists,
+  };
 };
 
 export default scrape;
