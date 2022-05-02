@@ -10,13 +10,8 @@ const getDocData = async () => {
     .catch((err) => console.log(err));
 };
 
-// const getYoutubeUrl = (searchKeyword) => {
-//   const
-// };
-
 const getData = async (child, $) => {
   const lists = [];
-  // const $ = cheerio.load(await getDocData());
 
   child.each(async (i, elem) => {
     const songInfo = $(elem).find(".wrap_song_info");
@@ -25,8 +20,6 @@ const getData = async (child, $) => {
     const title = $(songInfo).find(".rank01 > span > a").text().trim();
     const singer = $(songInfo).find(".rank02 > span").text().trim();
     const album = $(songInfo).find(".rank03 > a").text().trim();
-
-    // const url = await getYoutubeUrl(`${singer} ${title}`);
 
     lists.push({
       rank: rank,
