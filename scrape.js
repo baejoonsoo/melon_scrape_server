@@ -35,33 +35,29 @@ const getData = async (child, $) => {
   return lists;
 };
 
-const datePad = (date) => date.toString().padStart(2, "0");
+const getTimestemp = ($) => {
+  const calendar = $(".calendar_prid");
+
+  const date = $(calendar).find("span.yyyymmdd").text().trim();
+  const time = $(calendar).find("span.hhmm").text().trim();
+
+  return `${date} ${time}`;
+};
 
 const scrape = async () => {
   const $ = cheerio.load(await getDocData());
+
+  const timestemp = getTimestemp($);
 
   const table = $("table tbody");
   const lst50 = await getData(table.find(".lst50"), $);
   const lst100 = await getData(table.find(".lst100"), $);
 
-  const lists = [...lst50, ...lst100];
-
-  const date = new Date();
-
-  const time =
-    datePad(date.getDate()) +
-    "/" +
-    datePad(date.getMonth() + 1) +
-    "/" +
-    date.getFullYear() +
-    " " +
-    datePad(date.getHours()) +
-    ":" +
-    datePad(date.getMinutes());
+  const songRank = [...lst50, ...lst100];
 
   return {
-    timestemp: time,
-    songRank: lists,
+    timestemp,
+    songRank,
   };
 };
 
