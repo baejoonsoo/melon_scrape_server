@@ -21,11 +21,15 @@ const getData = async (child, $) => {
     const singer = $(songInfo).find(".rank02 > span").text().trim();
     const album = $(songInfo).find(".rank03 > a").text().trim();
 
+    const attr = $(songInfo).find(".rank03 > a").attr("href").slice(37, -3);
+    const url = "https://www.melon.com/album/detail.htm?albumId=" + attr;
+
     lists.push({
-      rank: rank,
-      title: title,
-      singer: singer,
-      album: album,
+      rank,
+      title,
+      singer,
+      album,
+      url,
     });
   });
 
@@ -40,7 +44,7 @@ const scrape = async () => {
   const lst100 = await getData(table.find(".lst100"), $);
 
   const lists = [...lst50, ...lst100];
-  console.log(lists);
+  // console.log(lists);
 
   return lists;
 };
