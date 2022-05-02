@@ -24,7 +24,7 @@ const getData = async (child, $) => {
     const url = "https://www.melon.com/album/detail.htm?albumId=" + attr;
 
     lists.push({
-      rank,
+      rank: parseInt(rank),
       title,
       singer,
       album,
@@ -53,7 +53,13 @@ const scrape = async () => {
   const lst50 = await getData(table.find(".lst50"), $);
   const lst100 = await getData(table.find(".lst100"), $);
 
-  const songRank = [...lst50, ...lst100];
+  const songRank = [...lst50, ...lst100].sort((a, b) => {
+    if (a.rank > b.rank) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
 
   return {
     timestemp,
