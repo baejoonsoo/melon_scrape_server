@@ -11,7 +11,7 @@ const getDocData = async () => {
     .catch((err) => console.log(err));
 };
 
-const getData = async (child, $) => {
+const getData = async (child, $): Promise<ChartListType[]> => {
   const lists: ChartListType[] = [];
 
   child.each(async (_, elem: HTMLElement) => {
@@ -42,7 +42,7 @@ const getData = async (child, $) => {
   return lists;
 };
 
-const getTimestemp = ($) => {
+const getTimestemp = ($): string => {
   const calendar: HTMLElement = $('.calendar_prid');
 
   const date: HTMLElement = $(calendar).find('span.yyyymmdd').text().trim();
